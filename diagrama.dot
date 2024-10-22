@@ -1,0 +1,49 @@
+//generado en Graphviz Online: https://dreampuf.github.io/GraphvizOnline/
+
+digraph python_code {
+    node [shape="box"];
+    
+    start [label="Inicio"];
+    load_config [label="Cargar configuración"];
+    update_config [label="Actualizar configuración"];
+    download_scenes [label="Descargar escenas"];
+    verify_download [label="Verificar descarga"];
+    log_successful_download [label="Registrar descarga exitosa"];
+    is_already_downloaded [label="Verificar si ya se ha descargado el archivo"];
+    load_sorting_config [label="Cargar configuración de ordenamiento"];
+    move_scene [label="Mover escena a destino"];
+    log_successful_sorting [label="Registrar ordenamiento exitoso"];
+    automate_sorting [label="Automatizar ordenamiento"];
+    manual_sorting [label="Ordenamiento manual"];
+    metadata_matches [label="Verificar coincidencia de metadatos"];
+    build_destination_path [label="Construir ruta de destino"];
+    generate_stack_id [label="Generar ID de pila"];
+    extract_metadata [label="Extraer metadatos"];
+    end [label="Fin"];
+
+    start -> load_config;
+    start -> update_config;
+    start -> download_scenes;
+    download_scenes -> load_config;
+    download_scenes -> verify_download;
+    download_scenes -> log_successful_download;
+    download_scenes -> is_already_downloaded;
+    download_scenes -> load_sorting_config;
+    download_scenes -> move_scene;
+    verify_download -> end;
+    log_successful_download -> end;
+    is_already_downloaded -> end;
+    move_scene -> log_successful_sorting;
+    log_successful_sorting -> end;
+    automate_sorting -> load_sorting_config;
+    automate_sorting -> extract_metadata;
+    automate_sorting -> metadata_matches;
+    automate_sorting -> build_destination_path;
+    automate_sorting -> move_scene;
+    manual_sorting -> move_scene;
+    metadata_matches -> end;
+    build_destination_path -> end;
+    generate_stack_id -> end;
+    extract_metadata -> end;
+}
+
